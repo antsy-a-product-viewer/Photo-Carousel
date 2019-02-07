@@ -4,13 +4,13 @@ const axios = require('axios');
 
 const uri = 'https://loremflickr.com/';
 const productTypes = ['jewellery','dress','hat','cargopants','craftproduct','kitten','necklace','purse','shoes','chair','socks','computer','toys','collectible'];
-const resolutions = [[800,600],[600,600],[1200,800],[800,1200],[300,400],[200,150]];
+const resolutions = [[800,600],[600,800],[640,480],[480,640],[578,578]];
+const filename = `placeholder.jpg`;
 
 const generateImages = (num) => {
-    for (let i = 0; i < num; i++) {
+    for (let i = 1; i <= num; i++) {
         let prodID = `${i}`;
         let destination = path.join(__dirname, `/images/${prodID}/`);
-        let filename = `${prodID}.jpg`;
         let resolution = randResolution();
         let type = randType();
         let url = uri+resolution+type;
@@ -42,14 +42,13 @@ const generateImages = (num) => {
 }
 
 const randType = () => {
-    let index = Math.floor(Math.random() * Math.floor(productTypes.length));
+    let index = Math.floor(Math.random() * productTypes.length);
     return productTypes[index];
 }
 
 const randResolution = () => {
-    let index = Math.floor(Math.random() * Math.floor(resolutions.length));
+    let index = Math.floor(Math.random() * resolutions.length);
     return `${resolutions[index][0]}/${resolutions[index][1]}/`;
 }
 
 //generateImages(99);
-

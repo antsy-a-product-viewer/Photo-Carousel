@@ -4,6 +4,9 @@
 ## config ##
 config.js
 
+## Media ##
+/database-seed/images
+
 ## NPM ##
 npm
 npm-debug.log

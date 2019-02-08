@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
-const DB_SCHEMA = require('database-schema.js').DB_SCHEMA;
+const DB_SCHEMA = require('./database-schema.js').DB_SCHEMA;
 const DATABASE_LINK = process.env.DATABASE_LINK || require('../config.js').DATABASE_LINK;
 
 mongoose.connect(DATABASE_LINK, { useNewUrlParser: true, useCreateIndex: true });

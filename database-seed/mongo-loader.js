@@ -16,13 +16,15 @@ const productImageScheme = mongoose.Schema({
     }]
 })
 
+let Product = mongoose.model('ProductImage', productImageScheme);
+
 const seedDatabase = () => {
     let documents = JSON.parse(retrieveData());
-    console.log(documents);
     documents.forEach((document) => {
-        //TODO:
-    })
-
+        Product.update({'productID':document.productID}, document, {upsert: true}, (err) => {
+            if (err) throw err;
+        })
+    });
 }
 
 const retrieveData = () => {
@@ -30,4 +32,4 @@ const retrieveData = () => {
     return fs.readFileSync(source,'utf-8');
 }
 
-seedDatabase();
+//seedDatabase();

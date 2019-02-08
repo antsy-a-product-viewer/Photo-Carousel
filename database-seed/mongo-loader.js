@@ -58,3 +58,7 @@ const retrieveData = () => {
 }
 
 seedDatabase();
+
+module.exports = {
+    DB_SCHEMA: productImageScheme
+};

@@ -26,12 +26,17 @@ const router = {
     allowImageRetrieval: () => {
         server.get('/index/:productID/', (req, res) => {
             let productID = req.params.productID;
-            //retrieve first (as a promise), .then send result
-            //for now, lets just console log a database retrieval
+            queryDatabase(productID).then((document) => {
+                console.log(document);
+                //res.send(document, () => {
+                // for sending to the client later.
+                // we dont need to do this yet.
+                // res.end();
+                //}
+            });
         })
     }
 };
-
 
 
 //*********** DATABASE CONNECTION ***********
@@ -39,11 +44,15 @@ const mongoose = require('mongoose');
 const DATABASE_LINK = process.env.DATABASE_LINK || require('../config.js').DATABASE_LINK;
 const DB_SCHEMA = require('../database-seed/mongo-loader.js').DB_SCHEMA;
 
-const DB_QUERY = (productID) => {
+const queryDatabase = (productID) => {
     mongoose.connection(DATABASE_LINK, { useNewUrlParser: true, useCreateIndex: true });
     let Product = mongoose.model('ProductImage', DB_SCHEMA);
-    //query for productID, and return the result
-    //return a promise :)
+    return new Promise((resolve, reject) => {
+        Product.findOne({productID: productId}, (err, result) => {
+            if (err) reject(err);
+            resolve(result);
+        })
+    })
 }
 
 

@@ -1,22 +1,12 @@
 const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
+const DB_SCHEMA = require('database-schema.js').DB_SCHEMA;
 const DATABASE_LINK = process.env.DATABASE_LINK || require('../config.js').DATABASE_LINK;
 
 mongoose.connect(DATABASE_LINK, { useNewUrlParser: true, useCreateIndex: true });
 
-const productImageScheme = mongoose.Schema({
-    productID: {
-        type: Number,
-        unique: true
-    },
-    images: [{
-        url: String,
-        sort: Number
-    }]
-})
-
-let Product = mongoose.model('ProductImage', productImageScheme);
+let Product = mongoose.model('ProductImage', DB_SCHEMA);
 
 const seedDatabase = () => {
     dropDatabase()
@@ -28,7 +18,8 @@ const seedDatabase = () => {
         });
         Promise.all(updates).then(() => {
             console.log('Database seeded');
-            process.exit();
+            mongoose.connection.close();
+
         })
     });
 }
@@ -58,7 +49,3 @@ const retrieveData = () => {
 }
 
 seedDatabase();
-
-module.exports = {
-    DB_SCHEMA: productImageScheme
-};

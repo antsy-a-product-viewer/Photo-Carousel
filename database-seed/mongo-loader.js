@@ -21,10 +21,12 @@ let Product = mongoose.model('ProductImage', productImageScheme);
 const seedDatabase = () => {
     let documents = JSON.parse(retrieveData());
     documents.forEach((document) => {
-        Product.update({'productID':document.productID}, document, {upsert: true}, (err) => {
+        Product.updateOne({'productID':document.productID}, document, {upsert: true}, (err) => {
             if (err) throw err;
         })
     });
+    console.log('seed complete, exiting in 5 seconds');
+    setTimeout(()=>{process.exit()}, 5000);
 }
 
 const retrieveData = () => {
@@ -32,4 +34,4 @@ const retrieveData = () => {
     return fs.readFileSync(source,'utf-8');
 }
 
-//seedDatabase();
+seedDatabase();

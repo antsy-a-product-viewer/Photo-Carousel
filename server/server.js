@@ -17,7 +17,6 @@ const router = {
     serveClient: () => {
         server.use(express.static('../client/dist'));
         server.get('/', (req, res) => {
-            console.log('sending html?');
             let index = path.join(__dirname, '../client/index.html');
             res.sendFile(index, (err) => {
                 if (err) throw err;

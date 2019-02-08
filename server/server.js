@@ -28,15 +28,11 @@ const router = {
 
     allowImageRetrieval: () => {
         server.get('/images/:productID/', (req, res) => {
-            console.log('imgage req rcvd');
             let productID = req.params.productID;
-            queryDatabase(productID).then((document) => {
-                res.send(document, () => {
-                    res.statusCode = 200;
-                    res.end();
-                });
-            });
-        })
+            queryDatabase(productID)
+            .then(document => {res.status(200).send(document).end()})
+            .catch(err => {throw err});
+        });
     }
 };
 

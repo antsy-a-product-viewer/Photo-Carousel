@@ -8,7 +8,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node ./database-seed/mongo-loader.js",
+    "generate_data": "node ./database-seed/mongod-document-generator.js",
+    "post_data": "node ./database-seed/mongo-loader.js",
+    "seed": "npm run generate_data && npm run post_data",
     "react-dev": "webpack -d --watch"
   },
   "dependencies": {

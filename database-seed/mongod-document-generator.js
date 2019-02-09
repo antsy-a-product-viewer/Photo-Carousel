@@ -39,4 +39,4 @@ const writeDocs = (docs) => {
 }
 
 //uncomment to run:
-//writeDocs(generateDocs(99));
+writeDocs(generateDocs(99));

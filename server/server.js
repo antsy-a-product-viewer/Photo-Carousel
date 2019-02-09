@@ -19,18 +19,26 @@ const router = {
         server.get('/', (req, res) => {
             let index = path.join(__dirname, '../client/index.html');
             res.sendFile(index, (err) => {
-                if (err) throw err;
-                res.end();
-            });
+                if (err) {
+                    res.status(500).end();
+                    throw err;
+                }
+            }).end();
         });
     },
 
     allowImageRetrieval: () => {
-        server.get('/images/:productID/', (req, res) => {
+        server.get('/product/:productID/images', (req, res) => {
             let productID = req.params.productID;
             queryDatabase(productID)
-            .then(document => {res.status(200).send(document).end()})
-            .catch(err => {throw err});
+            .then(document => {
+                if (document === null) res.status(404).end();
+                res.status(200).send(document).end()
+            })
+            .catch(err => {
+                res.status(500).end();
+                throw err;
+            });
         });
     }
 };

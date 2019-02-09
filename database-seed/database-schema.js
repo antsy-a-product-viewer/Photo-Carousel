@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const productImageScheme = mongoose.Schema({
+const productImageSchema = mongoose.Schema({
     productID: {
         type: Number,
         unique: true
@@ -12,5 +12,5 @@ const productImageScheme = mongoose.Schema({
 });
 
 module.exports = {
-    DB_SCHEMA: productImageScheme
+    DB_SCHEMA: productImageSchema
 }

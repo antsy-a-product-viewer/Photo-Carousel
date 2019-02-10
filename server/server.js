@@ -64,7 +64,6 @@ const serveClientWithImages = () => {
   });
 };
 
-
 //********************** START SERVER **********************
 (initialize => {
   serveClientWithImages();

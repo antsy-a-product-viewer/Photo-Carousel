@@ -15,7 +15,7 @@ const initialize = () => {
 const router = {
 
   serveClient: () => {
-    server.use(express.static('../client/dist'));
+    server.use(express.static(path.join(__dirname,'../client/dist')));
     server.get('/', (req, res) => {
       let index = path.join(__dirname, '../client/index.html');
       res.sendFile(index, (err) => {

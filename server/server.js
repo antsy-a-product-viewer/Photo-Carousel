@@ -23,7 +23,8 @@ const router = {
           res.status(500).end();
           throw err;
         }
-      }).end();
+        res.end();
+      });
     });
   },
 

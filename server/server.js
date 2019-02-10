@@ -1,47 +1,50 @@
 //**************************** SERVER *****************************
 const express = require('express');
 const server = express();
+const fs = require('fs');
 const path = require('path');
 const port = process.env.PORT || 3010;
 
 const initialize = () => {
-  router.serveClient();
-  router.allowImageRetrieval();
+  serveClientWithImages();
   server.listen(port, () => {
     console.log(`listening on port ${port}`);
   });
 };
 
-const router = {
+const serveClientWithImages = () => {
+  server.use(express.static(path.join(__dirname, '../client/dist')));
+  server.get('/product/:productID/images', (req, res) => {
 
-  serveClient: () => {
-    server.use(express.static(path.join(__dirname,'../client/dist')));
-    server.get('/', (req, res) => {
-      let index = path.join(__dirname, '../client/index.html');
-      res.sendFile(index, (err) => {
-        if (err) {
-          res.status(500).end();
-          throw err;
+    //first get the data from the database:
+    let productID = req.params.productID;
+    queryDatabase(productID)
+      .then(document => {
+        if (document === null) {
+          res.status(404).end();
+        } else {
+          saveDocument(document)
+            .then(() => {
+              let index = path.join(__dirname, '../client/index.html');
+              res.sendFile(index, (err) => {
+                if (err) {
+                  res.status(500).end();
+                  throw err;
+                }
+                res.status(200).sendFile(index).end();
+              });
+            })
+            .catch(err => {
+              res.status(500).end();
+              throw err;
+            });
         }
-        res.end();
+      })
+      .catch(err => {
+        res.status(500).end();
+        throw err;
       });
-    });
-  },
-
-  allowImageRetrieval: () => {
-    server.get('/product/:productID/images', (req, res) => {
-      let productID = req.params.productID;
-      queryDatabase(productID)
-        .then(document => {
-          if (document === null) res.status(404).end();
-          res.status(200).send(document).end();
-        })
-        .catch(err => {
-          res.status(500).end();
-          throw err;
-        });
-    });
-  }
+  });
 };
 
 
@@ -61,6 +64,17 @@ const queryDatabase = (productID) => {
     });
   });
 };
+
+//********************** WRITE CONNECTION **********************
+const saveDocument = (document) => {
+  return new Promise((resolve, reject) => {
+    let destination = path.join(__dirname, '../client/dist/images.js');
+    fs.writeFile(destination, JSON.stringify(document), (err) => {
+      if(err) reject(err);
+      resolve()
+    });
+  });
+}
 
 
 //********************** START SERVER **********************

@@ -24,15 +24,12 @@ const queryDatabase = (productID) => {
 
 //********************** SERVE CLIENT **********************
 const serveClient = () => {
-  //server.use(express.static(path.join(__dirname, '../client/dist'))); //leaving this here in case it comes in handy later
   server.use('/product/:productID/images', express.static(path.join(__dirname, '../client/dist')));
 };
 
 const serveClientImageData = () => {
   server.get('/product/:productID/images/retrieve', (req, res) => {
     let productID = req.params.productID;
-    console.log(`updating to ID: ${productID}`);
-
     queryDatabase(productID)
       .then(document => {
         if (document === null) {

@@ -36,7 +36,9 @@ const saveDocument = (document) => {
 
 //********************** SERVE CLIENT **********************
 const serveClientWithImages = () => {
-  server.use(express.static(path.join(__dirname, '../client/dist')));
+  // server.use(express.static(path.join(__dirname, '../client/dist'))); //leaving this here in case it comes in handy later
+  server.use('/product/:productID/images', express.static(path.join(__dirname, '../client/dist')));
+
   server.get('/product/:productID/images', (req, res) => {
     let productID = req.params.productID;
     queryDatabase(productID)
@@ -46,14 +48,7 @@ const serveClientWithImages = () => {
         } else {
           saveDocument(document)
             .then(() => {
-              let index = path.join(__dirname, '../client/index.html');
-              res.sendFile(index, (err) => {
-                if (err) {
-                  res.status(500).end();
-                  throw err;
-                }
-                res.status(200).sendFile(index).end();
-              });
+              res.status(200).end();
             });
         }
       })

@@ -1,7 +1,8 @@
 export default {
   thumbnailImage: {
     width: '40px',
-    height: '40px'
+    height: '40px',
+    margin: '5px'
   },
   scaledImage: {
     width: '578px',
@@ -14,7 +15,6 @@ export default {
   },
   container: {
     width: '580px',
-    height: '640px',
-    backgroundColor: 'grey'
+    height: '640px'
   }
 };

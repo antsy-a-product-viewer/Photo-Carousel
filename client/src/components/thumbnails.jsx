@@ -1,6 +1,13 @@
-const Thumbnails = () => {
+import Thumbnail from './thumbnail.jsx';
+import styles from './styles.css.js';
+
+const Thumbnails = (props) => {
   return (
-    <div>Thumbnails</div>
+    <div style={styles.thumbnailBar}>
+      {props.images.map(image => {
+        return <Thumbnail image={image}/>
+      })}
+    </div>
   );
 };
 

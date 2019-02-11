@@ -1,14 +1,18 @@
 import Thumbnails from './thumbnails.jsx';
 import Scaled from './scaled.jsx';
 import axios from 'axios';
+import styles from './styles.css.js';
 
-const dummy = [
-  {url: '/images/1/placeholder.jpg', sort: 0},
-  {url: '/images/1/placeholder.jpg', sort: 1},
-  {url: '/images/1/placeholder.jpg', sort: 2}
+
+const dummy = [ //local drive loading for development only
+  {url: './placeholder.jpg', sort: 0},
+  {url: './placeholder.jpg', sort: 1},
+  {url: './placeholder.jpg', sort: 2},
+  {url: './placeholder.jpg', sort: 3},
+  {url: './placeholder.jpg', sort: 4},
+  {url: './placeholder.jpg', sort: 5},
+  {url: './placeholder.jpg', sort: 6}
 ];
-
-const URI = 'https://s3-us-west-1.amazonaws.com/beyond-antsy';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -40,16 +44,16 @@ class Carousel extends React.Component {
 
   render() {
     return (
-      <div>Container
-        <Scaled />
+      <div style={styles.container}>
+        <Scaled image={this.state.scaled.url}/>
         <br></br>
-        <Thumbnails />
+        <Thumbnails images={this.state.images}/>
       </div>
     );
   }
 
   componentDidMount() {
-    this.retrieveImageDocument();
+    //this.retrieveImageDocument(); //uncomment to query S3 (warning: bandwidth)
   }
 }
 

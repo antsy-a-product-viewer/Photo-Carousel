@@ -1,6 +1,8 @@
-const Scaled = () => {
+import styles from './styles.css.js';
+
+const Scaled = (props) => {
   return (
-    <div>Scaled Div</div>
+    <div><img src={props.image} style={styles.scaledImage}></img></div>
   );
 };
 

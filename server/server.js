@@ -23,33 +23,25 @@ const queryDatabase = (productID) => {
   });
 };
 
-//********************** WRITE DATA **********************
-const saveDocument = (document) => {
-  return new Promise((resolve, reject) => {
-    let destination = path.join(__dirname, '../client/dist/images.js');
-    fs.writeFile(destination, JSON.stringify(document), (err) => {
-      if (err) reject(err);
-      resolve();
-    });
-  });
-};
+
 
 //********************** SERVE CLIENT **********************
-const serveClientWithImages = () => {
-  // server.use(express.static(path.join(__dirname, '../client/dist'))); //leaving this here in case it comes in handy later
+const serveClient = () => {
+  //server.use(express.static(path.join(__dirname, '../client/dist'))); //leaving this here in case it comes in handy later
   server.use('/product/:productID/images', express.static(path.join(__dirname, '../client/dist')));
+};
 
-  server.get('/product/:productID/images', (req, res) => {
+const serveClientImageData = () => {
+  server.get('/product/:productID/images/retrieve', (req, res) => {
     let productID = req.params.productID;
+    console.log(`updating to ID: ${productID}`);
+
     queryDatabase(productID)
       .then(document => {
         if (document === null) {
           res.status(404).end();
         } else {
-          saveDocument(document)
-            .then(() => {
-              res.status(200).end();
-            });
+          res.status(200).send(document).end();
         }
       })
       .catch(err => {
@@ -61,7 +53,8 @@ const serveClientWithImages = () => {
 
 //********************** START SERVER **********************
 (initialize => {
-  serveClientWithImages();
+  serveClient();
+  serveClientImageData();
   server.listen(port, () => {
     console.log(`listening on port ${port}`);
   });

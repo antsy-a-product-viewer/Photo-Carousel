@@ -8,11 +8,14 @@ const dummy = [
   {url: '/images/1/placeholder.jpg', sort: 2}
 ];
 
+const URI = 'https://s3-us-west-1.amazonaws.com/beyond-antsy';
+
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: dummy
+      images: dummy,
+      scaled: dummy[0]
     };
     this.retrieveImageDocument = this.retrieveImageDocument.bind(this);
   }
@@ -25,7 +28,8 @@ class Carousel extends React.Component {
     })
       .then((document) => {
         this.setState({
-          images: document.data.images
+          images: document.data.images,
+          scaled: document.data.images[0]
         });
       })
       .catch((err) => {

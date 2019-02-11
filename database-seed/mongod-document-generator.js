@@ -22,7 +22,7 @@ const createImageArray = (prodID, n = rand()) => {
     let images = [];
     for (let i = 0; i < n; i++) {
         let image = {
-            url: `/images/${prodID}/placeholder.jpg`,
+            url: `https://s3-us-west-1.amazonaws.com/beyond-antsy/images/${prodID}/placeholder.jpg`,
             sort: i
         };
         images.push(image);

@@ -5,7 +5,6 @@ const fs = require('fs');
 const path = require('path');
 const port = process.env.PORT || 3010;
 
-
 //********************** DATABASE CONNECTION **********************
 const mongoose = require('mongoose');
 const DATABASE_LINK = process.env.DATABASE_LINK || require('../config.js').DATABASE_LINK;
@@ -22,8 +21,6 @@ const queryDatabase = (productID) => {
     });
   });
 };
-
-
 
 //********************** SERVE CLIENT **********************
 const serveClient = () => {

@@ -21,8 +21,8 @@ class Carousel extends React.Component {
       scaled: 0,
       isFavorite: false //there is no way to keep track of users right now.
     };
-    this.retrieveImageDocument = this.retrieveImageDocument.bind(this);
 
+    this.retrieveImageDocument = this.retrieveImageDocument.bind(this);
     this.changeFavorite = this.changeFavorite.bind(this);
     this.cycleForward = this.cycleForward.bind(this);
     this.cycleBack = this.cycleBack.bind(this);
@@ -38,12 +38,10 @@ class Carousel extends React.Component {
     console.log(`Is this product favorited? ${this.state.isFavorite ? 'yes' : 'no'}`);
   }
 
-  handleThumbnailClick(event) {
-    console.log(event.target);
+  handleThumbnailClick(val) {
     this.setState({
-      scaled: 0
+      scaled: val
     });
-
   }
 
   cycleForward() {
@@ -70,6 +68,9 @@ class Carousel extends React.Component {
     }
     console.log(`now showing image ${this.state.scaled}`);
   }
+
+
+  //******************** STATE FUNC ********************
 
   retrieveImageDocument() {
     let endpoint = window.location.pathname + 'retrieve';

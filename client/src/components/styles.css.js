@@ -35,6 +35,3 @@ export default {
     display: 'inline'
   }
 };
-
-//  transform: translate(-50%, -50%);
-//-ms-transform: translate(-50%, -50%);

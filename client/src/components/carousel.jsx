@@ -3,15 +3,14 @@ import Scaled from './scaled.jsx';
 import axios from 'axios';
 import styles from './styles.css.js';
 
-
 const dummy = [ //local drive loading for development only
   {url: './placeholder.jpg', sort: 0},
-  {url: './placeholder.jpg', sort: 1},
-  {url: './placeholder.jpg', sort: 2},
-  {url: './placeholder.jpg', sort: 3},
-  {url: './placeholder.jpg', sort: 4},
-  {url: './placeholder.jpg', sort: 5},
-  {url: './placeholder.jpg', sort: 6}
+  {url: './placeholder1.jpg', sort: 1},
+  {url: './placeholder2.jpg', sort: 2},
+  {url: './placeholder3.jpg', sort: 3},
+  {url: './placeholder4.jpg', sort: 4},
+  {url: './placeholder5.jpg', sort: 5},
+  {url: './placeholder6.jpg', sort: 6}
 ];
 
 class Carousel extends React.Component {
@@ -19,10 +18,59 @@ class Carousel extends React.Component {
     super(props);
     this.state = {
       images: dummy,
-      scaled: dummy[0]
+      scaled: 0,
+      isFavorite: false //there is no way to keep track of users right now.
     };
+
     this.retrieveImageDocument = this.retrieveImageDocument.bind(this);
+    this.changeFavorite = this.changeFavorite.bind(this);
+    this.cycleForward = this.cycleForward.bind(this);
+    this.cycleBack = this.cycleBack.bind(this);
+    this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
   }
+
+  //******************** EVENT HANDLERS ********************
+  changeFavorite() {
+    this.setState({
+      isFavorite: !this.state.isFavorite
+    });
+    //TODO: need to visually show the change, for now just log
+    console.log(`Is this product favorited? ${this.state.isFavorite ? 'yes' : 'no'}`);
+  }
+
+  handleThumbnailClick(val) {
+    this.setState({
+      scaled: val
+    });
+  }
+
+  cycleForward() {
+    if (this.state.scaled < this.state.images.length - 1) {
+      this.setState({
+        scaled: this.state.scaled + 1
+      });
+    } else {
+      this.setState({
+        scaled: 0
+      });
+    }
+  }
+
+  cycleBack() {
+    if (this.state.scaled > 0) {
+      this.setState({
+        scaled: this.state.scaled - 1
+      });
+    } else {
+      this.setState({
+        scaled: this.state.images.length - 1
+      });
+    }
+    console.log(`now showing image ${this.state.scaled}`);
+  }
+
+
+  //******************** STATE FUNC ********************
 
   retrieveImageDocument() {
     let endpoint = window.location.pathname + 'retrieve';
@@ -33,7 +81,7 @@ class Carousel extends React.Component {
       .then((document) => {
         this.setState({
           images: document.data.images,
-          scaled: document.data.images[0]
+          scaled: 0
         });
       })
       .catch((err) => {
@@ -42,12 +90,21 @@ class Carousel extends React.Component {
       });
   }
 
+  //******************** VIEW HANDLERS ********************
+
   render() {
+    let i = this.state.scaled;
     return (
       <div style={styles.container}>
-        <Scaled image={this.state.scaled.url}/>
+        <Scaled
+          image={this.state.images[i].url}
+          favorite={this.changeFavorite}
+          leftHandle={this.cycleBack}
+          rightHandle={this.cycleForward}/>
         <br></br>
-        <Thumbnails images={this.state.images}/>
+        <Thumbnails
+          images={this.state.images}
+          change={this.handleThumbnailClick}/>
       </div>
     );
   }

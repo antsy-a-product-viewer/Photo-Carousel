@@ -5,12 +5,12 @@ import styles from './styles.css.js';
 
 const dummy = [ //local drive loading for development only
   {url: './placeholder.jpg', sort: 0},
-  {url: './placeholder.jpg', sort: 1},
-  {url: './placeholder.jpg', sort: 2},
-  {url: './placeholder.jpg', sort: 3},
-  {url: './placeholder.jpg', sort: 4},
-  {url: './placeholder.jpg', sort: 5},
-  {url: './placeholder.jpg', sort: 6}
+  {url: './placeholder1.jpg', sort: 1},
+  {url: './placeholder2.jpg', sort: 2},
+  {url: './placeholder3.jpg', sort: 3},
+  {url: './placeholder4.jpg', sort: 4},
+  {url: './placeholder5.jpg', sort: 5},
+  {url: './placeholder6.jpg', sort: 6}
 ];
 
 class Carousel extends React.Component {
@@ -22,9 +22,14 @@ class Carousel extends React.Component {
       isFavorite: false //there is no way to keep track of users right now.
     };
     this.retrieveImageDocument = this.retrieveImageDocument.bind(this);
+
     this.changeFavorite = this.changeFavorite.bind(this);
+    this.cycleForward = this.cycleForward.bind(this);
+    this.cycleBack = this.cycleBack.bind(this);
+    this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
   }
 
+  //******************** EVENT HANDLERS ********************
   changeFavorite() {
     this.setState({
       isFavorite: !this.state.isFavorite
@@ -63,6 +68,7 @@ class Carousel extends React.Component {
         scaled: this.state.images.length - 1
       });
     }
+    console.log(`now showing image ${this.state.scaled}`);
   }
 
   retrieveImageDocument() {
@@ -74,7 +80,7 @@ class Carousel extends React.Component {
       .then((document) => {
         this.setState({
           images: document.data.images,
-          scaled: 0 //set to default photo
+          scaled: 0
         });
       })
       .catch((err) => {
@@ -83,13 +89,21 @@ class Carousel extends React.Component {
       });
   }
 
+  //******************** VIEW HANDLERS ********************
+
   render() {
     let i = this.state.scaled;
     return (
       <div style={styles.container}>
-        <Scaled image={this.state.images[i].url}/>
+        <Scaled
+          image={this.state.images[i].url}
+          favorite={this.changeFavorite}
+          leftHandle={this.cycleBack}
+          rightHandle={this.cycleForward}/>
         <br></br>
-        <Thumbnails images={this.state.images}/>
+        <Thumbnails
+          images={this.state.images}
+          change={this.handleThumbnailClick}/>
       </div>
     );
   }

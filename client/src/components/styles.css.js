@@ -23,7 +23,7 @@ export default {
     // top: '10%',
     // left: '90%',
     transform: 'translate(500px, -550px)', //modern browsers
-    //mstransform: 'translate(-90%,-10%', //for IE
+    //mstransform: 'translate(-90%,-10%', //for IE lol
     display: 'inline'
   },
   leftCarousel: {

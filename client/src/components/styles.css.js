@@ -33,5 +33,34 @@ export default {
   rightCarousel: {
     transform: 'translate(450px, -225px)',
     display: 'inline'
+  },
+  modal: { //the popup modal
+    position:'fixed',
+    background: 'white',
+    width: '80%',
+    height: 'auto',
+    top:'50%',
+    left:'50%',
+    transform: 'translate(-50%,-50%)',
+    backgroundcolor: 'gray'
+  },
+  modalContent: { //the image
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundcolor: 'white',
+    padding: '1rem 1.5rem',
+    width: '24rem',
+    borderradius: '0.5rem'
+  },
+  modalBtn: { //the button
+    float: 'right',
+    width: '1.5rem',
+    lineheight: '1.5rem',
+    textalign: 'center',
+    cursor: 'pointer',
+    borderradius: '0.25rem',
+    backgroundcolor: 'lightgray'
   }
 };

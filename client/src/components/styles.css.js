@@ -37,22 +37,30 @@ export default {
   modal: { //the popup modal
     position:'fixed',
     background: 'white',
-    width: '80%',
+    width: 'auto',
     height: 'auto',
-    top:'50%',
-    left:'50%',
+    top: '50%',
+    left: '50%',
     transform: 'translate(-50%,-50%)',
-    backgroundcolor: 'gray'
+    padding: '15px',
+    margin: '10px',
+    zindex: '1000' //ensures this is always on the very top.
   },
   modalContent: { //the image
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    backgroundcolor: 'white',
+    'background-color': 'rgba(0, 0, 0, 0.5)',
     padding: '1rem 1.5rem',
-    width: '24rem',
-    borderradius: '0.5rem'
+    // width: '24rem',
+    borderradius: '0.5rem',
+    margin: '20px',
+    'border-bottom-left-radius': '8px',
+    'border-bottom-right-radius': '8px',
+    'border-top-left-radius': '8px',
+    'border-top-right-radius': '8px',
+    'background-attachment': 'scroll'
   },
   modalBtn: { //the button
     float: 'right',

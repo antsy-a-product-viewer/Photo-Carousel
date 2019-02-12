@@ -29,7 +29,9 @@ class Carousel extends React.Component {
     this.cycleForward = this.cycleForward.bind(this);
     this.cycleBack = this.cycleBack.bind(this);
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
   }
 
   //******************** EVENT HANDLERS ********************
@@ -41,15 +43,21 @@ class Carousel extends React.Component {
     });
   }
 
-  toggleModal() { //it will probably be best to have a separate function for hide and show
+  openModal() { //it will probably be best to have a separate function for hide and show
     this.setState({
-      modalActive: !this.state.modalActive
+      modalActive: true
     });
   }
 
-  handleThumbnailClick(val) {
+  closeModal() {
     this.setState({
-      scaled: val
+      modalActive: false
+    });
+  }
+
+  handleThumbnailClick(newIndex) {
+    this.setState({
+      scaled: newIndex
     });
   }
 
@@ -76,7 +84,6 @@ class Carousel extends React.Component {
       });
     }
   }
-
 
   //******************** STATE ********************
 
@@ -109,13 +116,13 @@ class Carousel extends React.Component {
           favorite={this.changeFavorite}
           leftHandle={this.cycleBack}
           rightHandle={this.cycleForward}
-          toggleModal={this.toggleModal}/>
+          openModal={this.openModal}/>
         <br></br>
         <Thumbnails
           images={this.state.images}
           change={this.handleThumbnailClick}/>
         <br></br>
-        <Modal toggleModal={this.toggleModal} modalActive={this.state.modalActive} image={this.state.images[i].url}/>>
+        <Modal closeModal={this.closeModal} modalActive={this.state.modalActive} image={this.state.images[i].url}/>>
       </div>
     );
   }

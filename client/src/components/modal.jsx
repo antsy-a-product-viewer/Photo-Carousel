@@ -7,7 +7,7 @@ const Modal = props => {
     return (
       <div style={styles.modal}>
         <div style={styles.modalContent}>
-          <span style={styles.modalBtn} onClick={()=>{props.toggleModal()}}>&times;</span>
+          <span style={styles.modalBtn} onClick={()=>{props.closeModal()}}>&times;</span>
           <img src={props.image}></img>
         </div>
       </div>

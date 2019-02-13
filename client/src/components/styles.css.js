@@ -35,7 +35,10 @@ export default {
     'borderBottomRightRadius': '50%',
     'borderTopLeftRadius': '50%',
     'borderTopRightRadius': '50%',
-    color: 'rgb(89, 89, 89)',
+    lineHeight: '11px',
+    display: 'inline-block',
+    padding: '6px'
+
   },
   heart: {
     height: '24px',

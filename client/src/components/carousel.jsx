@@ -38,8 +38,6 @@ class Carousel extends React.Component {
   changeFavorite() {
     this.setState({
       isFavorite: !this.state.isFavorite
-    }, () => {
-      console.log(`Product favorite is now: ${this.state.isFavorite ? 'yes' : 'no'}`);
     });
   }
 
@@ -116,6 +114,7 @@ class Carousel extends React.Component {
         <Scaled
           image={this.state.images[i].url}
           favorite={this.changeFavorite}
+          isFavorite={this.state.isFavorite}
           leftHandle={this.cycleBack}
           rightHandle={this.cycleForward}
           openModal={this.openModal}/>

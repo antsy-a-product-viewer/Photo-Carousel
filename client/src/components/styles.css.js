@@ -2,26 +2,26 @@ export default {
   thumbnailImage: {
     width: '40px',
     height: '40px',
-    margin: '5px'
+    margin: '5px',
+    objectFit: 'contain'
   },
   scaledImage: {
     width: '578px',
-    height: '578px',
+    height: '678px',
+    objectFit: 'contain',
     cursor: 'zoom-in' //this isnt the same as etsy (custom cursor?)
   },
   thumbnailBar: {
     display: 'flex',
     'flexDirection': 'row',
-    'justifyContent': 'center',
-    'flexWrap': 'wrap',
-    'flexBasis': '21%'
+    'justifyContent': 'center'
   },
   container: {
     width: '580px',
-    height: '580px'
+    height: '680px'
   },
   heartButton: {
-    transform: 'translate(510px, -600px)',
+    transform: 'translate(510px, -700px)',
     width: '66px',
     opacity: '1',
     height: '66px',
@@ -35,30 +35,40 @@ export default {
     'borderBottomRightRadius': '50%',
     'borderTopLeftRadius': '50%',
     'borderTopRightRadius': '50%',
-    color: 'rgb(89, 89, 89)'
+    color: 'rgb(89, 89, 89)',
   },
   heart: {
     height: '24px',
     width: '24px',
     position: 'relative'
   },
+  loveHeart: {
+    height: '24px',
+    width: '24px',
+    position: 'relative',
+    fill: 'rgb(193, 60, 39)'
+  },
   leftCarousel: {
-    transform: 'translate(-67px, -300px)',
+    transform: 'translate(-67px, -380px)',
     display: 'inline',
     opacity: '0.5',
     height: '80px',
     width: '40px',
     fontFamily: 'Verdana, sans-serif',
-    fontSize: 40
+    fontSize: 40,
+    backgroundColor: 'rgb(117, 117, 117)',
+    color: 'white'
   },
   rightCarousel: {
-    transform: 'translate(433px, -300px)',
+    transform: 'translate(433px, -380px)',
     display: 'inline',
     opacity: '0.5',
     height: '80px',
     width: '40px',
     fontFamily: 'Verdana, sans-serif',
-    fontSize: 40
+    fontSize: 40,
+    backgroundColor: 'rgb(117, 117, 117)',
+    color: 'white'
   },
   modal: { //the popup modal
     position:'fixed',

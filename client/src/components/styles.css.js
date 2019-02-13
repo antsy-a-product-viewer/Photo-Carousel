@@ -7,7 +7,7 @@ export default {
   scaledImage: {
     width: '578px',
     height: '578px',
-    cursor: 'zoom-in' //this isnt the same as etsy (custom?)
+    cursor: 'zoom-in' //this isnt the same as etsy (custom cursor?)
   },
   thumbnailBar: {
     display: 'flex',
@@ -18,23 +18,47 @@ export default {
   },
   container: {
     width: '580px',
-    height: '640px'
+    height: '580px'
   },
   heartButton: {
-    // position: 'absolute',
-    // top: '10%',
-    // left: '90%',
-    transform: 'translate(500px, -550px)', //modern browsers
-    //mstransform: 'translate(-90%,-10%', //for IE lol
-    display: 'inline'
+    transform: 'translate(510px, -600px)',
+    width: '66px',
+    opacity: '1',
+    height: '66px',
+    padding: '6px',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    borderColor: 'rgba(0, 0, 0, 0)'
+  },
+  heartContainer: {
+    backgroundColor: 'rgb(255, 255, 255)',
+    'borderBottomLeftRadius': '50%',
+    'borderBottomRightRadius': '50%',
+    'borderTopLeftRadius': '50%',
+    'borderTopRightRadius': '50%',
+    color: 'rgb(89, 89, 89)'
+  },
+  heart: {
+    height: '24px',
+    width: '24px',
+    position: 'relative'
   },
   leftCarousel: {
-    transform: 'translate(-50px, -225px)',
-    display: 'inline'
+    transform: 'translate(-67px, -300px)',
+    display: 'inline',
+    opacity: '0.5',
+    height: '80px',
+    width: '40px',
+    fontFamily: 'Verdana, sans-serif',
+    fontSize: 40
   },
   rightCarousel: {
-    transform: 'translate(450px, -225px)',
-    display: 'inline'
+    transform: 'translate(433px, -300px)',
+    display: 'inline',
+    opacity: '0.5',
+    height: '80px',
+    width: '40px',
+    fontFamily: 'Verdana, sans-serif',
+    fontSize: 40
   },
   modal: { //the popup modal
     position:'fixed',
@@ -55,7 +79,6 @@ export default {
     transform: 'translate(-50%, -50%)',
     'backgroundColor': 'rgba(0, 0, 0, 0.5)',
     padding: '1rem 1.5rem',
-    // width: '24rem',
     borderradius: '0.5rem',
     margin: '20px',
     'borderBottomLeftRadius': '8px',

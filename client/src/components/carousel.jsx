@@ -11,7 +11,7 @@ const dummy = [ //local drive loading for development only
   {url: './placeholder3.jpg', sort: 3},
   {url: './placeholder4.jpg', sort: 4},
   {url: './placeholder5.jpg', sort: 5},
-  {url: './placeholder6.jpg', sort: 6}
+  {url: './placeholder6.jpg', sort: 6},
 ];
 
 class Carousel extends React.Component {
@@ -39,7 +39,7 @@ class Carousel extends React.Component {
     this.setState({
       isFavorite: !this.state.isFavorite
     }, () => {
-      console.log(`Produc favorite is now: ${this.state.isFavorite ? 'yes' : 'no'}`);
+      console.log(`Product favorite is now: ${this.state.isFavorite ? 'yes' : 'no'}`);
     });
   }
 

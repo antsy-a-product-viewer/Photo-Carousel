@@ -6,10 +6,10 @@ const Scaled = (props) => {
       <img
         src={props.image}
         style={styles.scaledImage}
-        onClick={()=>props.openModal()}></img>
-      <button style={styles.heartButton} onClick={() => props.favorite()}>heart</button>
-      <button style={styles.leftCarousel} onClick={() => props.leftHandle()}>left</button>
-      <button style={styles.rightCarousel} onClick ={() => props.rightHandle()}>right</button>
+        onClick={props.openModal}></img>
+      <button style={styles.heartButton} onClick={props.favorite}>heart</button>
+      <button style={styles.leftCarousel} onClick={props.leftHandle}>left</button>
+      <button style={styles.rightCarousel} onClick ={props.rightHandle}>right</button>
     </div>
   );
 };

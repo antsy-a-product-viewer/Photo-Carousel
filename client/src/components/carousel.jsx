@@ -2,6 +2,7 @@ import Thumbnails from './thumbnails.jsx';
 import Scaled from './scaled.jsx';
 import axios from 'axios';
 import styles from './styles.css.js';
+import Modal from './modal.jsx';
 
 const dummy = [ //local drive loading for development only
   {url: './placeholder.jpg', sort: 0},
@@ -19,7 +20,8 @@ class Carousel extends React.Component {
     this.state = {
       images: dummy,
       scaled: 0,
-      isFavorite: false //there is no way to keep track of users right now.
+      isFavorite: false, //there is no way to keep track of users right now.
+      modalActive: false
     };
 
     this.retrieveImageDocument = this.retrieveImageDocument.bind(this);
@@ -27,20 +29,35 @@ class Carousel extends React.Component {
     this.cycleForward = this.cycleForward.bind(this);
     this.cycleBack = this.cycleBack.bind(this);
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
   }
 
   //******************** EVENT HANDLERS ********************
   changeFavorite() {
     this.setState({
       isFavorite: !this.state.isFavorite
+    }, () => {
+      console.log(`Produc favorite is now: ${this.state.isFavorite ? 'yes' : 'no'}`);
     });
-    //TODO: need to visually show the change, for now just log
-    console.log(`Is this product favorited? ${this.state.isFavorite ? 'yes' : 'no'}`);
   }
 
-  handleThumbnailClick(val) {
+  openModal() { //it will probably be best to have a separate function for hide and show
     this.setState({
-      scaled: val
+      modalActive: true
+    });
+  }
+
+  closeModal() {
+    this.setState({
+      modalActive: false
+    });
+  }
+
+  handleThumbnailClick(newIndex) {
+    this.setState({
+      scaled: newIndex
     });
   }
 
@@ -66,11 +83,9 @@ class Carousel extends React.Component {
         scaled: this.state.images.length - 1
       });
     }
-    console.log(`now showing image ${this.state.scaled}`);
   }
 
-
-  //******************** STATE FUNC ********************
+  //******************** STATE ********************
 
   retrieveImageDocument() {
     let endpoint = window.location.pathname + 'retrieve';
@@ -100,11 +115,14 @@ class Carousel extends React.Component {
           image={this.state.images[i].url}
           favorite={this.changeFavorite}
           leftHandle={this.cycleBack}
-          rightHandle={this.cycleForward}/>
+          rightHandle={this.cycleForward}
+          openModal={this.openModal}/>
         <br></br>
         <Thumbnails
           images={this.state.images}
           change={this.handleThumbnailClick}/>
+        <br></br>
+        <Modal closeModal={this.closeModal} modalActive={this.state.modalActive} image={this.state.images[i].url}/>>
       </div>
     );
   }

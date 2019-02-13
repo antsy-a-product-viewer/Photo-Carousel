@@ -27,7 +27,7 @@ export default {
     height: '66px',
     padding: '6px',
     backgroundColor: 'rgba(0, 0, 0, 0)',
-    borderColor: 'rgba(0, 0, 0, 0)'
+    color: 'rgba(0, 0, 0, 0)'
   },
   heartContainer: {
     backgroundColor: 'rgb(255, 255, 255)',
@@ -49,7 +49,9 @@ export default {
     height: '24px',
     width: '24px',
     position: 'relative',
-    fill: 'rgb(193, 60, 39)'
+    boxSizing: 'border-box',
+    fill: 'rgb(193, 60, 39)',
+    color: 'red'
   },
   leftCarousel: {
     transform: 'translate(-67px, -380px)',

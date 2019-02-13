@@ -55,6 +55,8 @@ class Carousel extends React.Component {
     });
   }
 
+
+
   handleThumbnailClick(newIndex) {
     this.setState({
       scaled: newIndex
@@ -122,7 +124,7 @@ class Carousel extends React.Component {
           images={this.state.images}
           change={this.handleThumbnailClick}/>
         <br></br>
-        <Modal closeModal={this.closeModal} modalActive={this.state.modalActive} image={this.state.images[i].url}/>>
+        <Modal closeModal={this.closeModal} modalActive={this.state.modalActive} image={this.state.images[i].url}/>
       </div>
     );
   }

@@ -5,7 +5,7 @@ const Thumbnail = (props) => {
     <div><img
       src={props.image.url}
       style={styles.thumbnailImage}
-      onClick={() => {props.change(props.index); }}>
+      onClick={() => { props.change(props.index); }}>
     </img></div>
   );
 };

@@ -12,7 +12,9 @@ export default {
   thumbnailBar: {
     display: 'flex',
     'flexDirection': 'row',
-    'justifyContent': 'center'
+    'justifyContent': 'center',
+    'flexWrap': 'wrap',
+    'flexBasis': '21%'
   },
   container: {
     width: '580px',
@@ -51,16 +53,16 @@ export default {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    'background-color': 'rgba(0, 0, 0, 0.5)',
+    'backgroundColor': 'rgba(0, 0, 0, 0.5)',
     padding: '1rem 1.5rem',
     // width: '24rem',
     borderradius: '0.5rem',
     margin: '20px',
-    'border-bottom-left-radius': '8px',
-    'border-bottom-right-radius': '8px',
-    'border-top-left-radius': '8px',
-    'border-top-right-radius': '8px',
-    'background-attachment': 'scroll'
+    'borderBottomLeftRadius': '8px',
+    'borderBottomRightRadius': '8px',
+    'borderTopLeftRadius': '8px',
+    'borderTopRightRadius': '8px',
+    'backgroundAttachment': 'scroll'
   },
   modalBtn: { //the button
     float: 'right',

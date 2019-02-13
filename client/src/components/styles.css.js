@@ -73,13 +73,10 @@ export default {
   modal: { //the popup modal
     position:'fixed',
     background: 'white',
-    width: 'auto',
-    height: 'auto',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%,-50%)',
-    padding: '15px',
-    margin: '10px',
+    padding: '20px',
     zindex: '1000' //ensures this is always on the very top.
   },
   modalContent: { //the image
@@ -98,12 +95,14 @@ export default {
     'backgroundAttachment': 'scroll'
   },
   modalBtn: { //the button
-    float: 'right',
-    width: '1.5rem',
-    lineheight: '1.5rem',
+    position: 'absolute',
+    right: '2px',
+    top: '5px',
+    width: '20px',
+    height: '20px',
     textalign: 'center',
     cursor: 'pointer',
-    borderradius: '0.25rem',
-    backgroundcolor: 'lightgray'
+    fontSize: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0)',
   }
 };

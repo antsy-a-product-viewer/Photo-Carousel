@@ -30,7 +30,7 @@ class Modal extends React.Component {
       return (
         <div style={styles.modal} id='modal'>
           <div style={styles.modalContent}>
-            <span style={styles.modalBtn} onClick={this.props.closeModal}>&times;</span>
+            <span style={styles.modalBtn} onClick={this.props.closeModal}>&otimes;</span>
             <img src={this.props.image}></img>
           </div>
         </div>
@@ -40,16 +40,3 @@ class Modal extends React.Component {
 }
 
 export default Modal;
-
-
-
-// closeModalExternal(e) { //watch for a click outside of the modal div
-
-//   if (this.state.modalActive) {
-//     let modalParent = document.getElementById('modal');
-//     console.log(modalParent.contains(e.target));
-//     this.setState({
-//       modalActive: false
-//     });
-//   }
-// }

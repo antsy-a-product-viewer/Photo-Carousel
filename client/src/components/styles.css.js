@@ -2,12 +2,14 @@ export default {
   thumbnailImage: {
     width: '40px',
     height: '40px',
-    margin: '5px'
+    margin: '5px',
+    objectFit: 'contain'
   },
   scaledImage: {
     width: '578px',
-    height: '578px',
-    cursor: 'zoom-in' //this isnt the same as etsy (custom?)
+    height: '678px',
+    objectFit: 'contain',
+    cursor: 'zoom-in' //this isnt the same as etsy (custom cursor?)
   },
   thumbnailBar: {
     display: 'flex',
@@ -16,34 +18,70 @@ export default {
   },
   container: {
     width: '580px',
-    height: '640px'
+    height: '680px'
   },
   heartButton: {
-    // position: 'absolute',
-    // top: '10%',
-    // left: '90%',
-    transform: 'translate(500px, -550px)', //modern browsers
-    //mstransform: 'translate(-90%,-10%', //for IE lol
-    display: 'inline'
+    transform: 'translate(510px, -700px)',
+    width: '66px',
+    opacity: '1',
+    height: '66px',
+    padding: '6px',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    color: 'rgba(0, 0, 0, 0)'
+  },
+  heartContainer: {
+    backgroundColor: 'rgb(255, 255, 255)',
+    'borderBottomLeftRadius': '50%',
+    'borderBottomRightRadius': '50%',
+    'borderTopLeftRadius': '50%',
+    'borderTopRightRadius': '50%',
+    lineHeight: '11px',
+    display: 'inline-block',
+    padding: '6px'
+
+  },
+  heart: {
+    height: '24px',
+    width: '24px',
+    position: 'relative'
+  },
+  loveHeart: {
+    height: '24px',
+    width: '24px',
+    position: 'relative',
+    boxSizing: 'border-box',
+    fill: 'rgb(193, 60, 39)',
+    color: 'red'
   },
   leftCarousel: {
-    transform: 'translate(-50px, -225px)',
-    display: 'inline'
+    transform: 'translate(-67px, -380px)',
+    display: 'inline',
+    opacity: '0.5',
+    height: '80px',
+    width: '40px',
+    fontFamily: 'Verdana, sans-serif',
+    fontSize: 40,
+    backgroundColor: 'rgb(117, 117, 117)',
+    color: 'white'
   },
   rightCarousel: {
-    transform: 'translate(450px, -225px)',
-    display: 'inline'
+    transform: 'translate(433px, -380px)',
+    display: 'inline',
+    opacity: '0.5',
+    height: '80px',
+    width: '40px',
+    fontFamily: 'Verdana, sans-serif',
+    fontSize: 40,
+    backgroundColor: 'rgb(117, 117, 117)',
+    color: 'white'
   },
   modal: { //the popup modal
     position:'fixed',
     background: 'white',
-    width: 'auto',
-    height: 'auto',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%,-50%)',
-    padding: '15px',
-    margin: '10px',
+    padding: '20px',
     zindex: '1000' //ensures this is always on the very top.
   },
   modalContent: { //the image
@@ -51,24 +89,25 @@ export default {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    'background-color': 'rgba(0, 0, 0, 0.5)',
+    'backgroundColor': 'rgba(0, 0, 0, 0.5)',
     padding: '1rem 1.5rem',
-    // width: '24rem',
     borderradius: '0.5rem',
     margin: '20px',
-    'border-bottom-left-radius': '8px',
-    'border-bottom-right-radius': '8px',
-    'border-top-left-radius': '8px',
-    'border-top-right-radius': '8px',
-    'background-attachment': 'scroll'
+    'borderBottomLeftRadius': '8px',
+    'borderBottomRightRadius': '8px',
+    'borderTopLeftRadius': '8px',
+    'borderTopRightRadius': '8px',
+    'backgroundAttachment': 'scroll'
   },
   modalBtn: { //the button
-    float: 'right',
-    width: '1.5rem',
-    lineheight: '1.5rem',
+    position: 'absolute',
+    right: '2px',
+    top: '5px',
+    width: '20px',
+    height: '20px',
     textalign: 'center',
     cursor: 'pointer',
-    borderradius: '0.25rem',
-    backgroundcolor: 'lightgray'
+    fontSize: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0)',
   }
 };

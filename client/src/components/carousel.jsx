@@ -11,7 +11,7 @@ const dummy = [ //local drive loading for development only
   {url: './placeholder3.jpg', sort: 3},
   {url: './placeholder4.jpg', sort: 4},
   {url: './placeholder5.jpg', sort: 5},
-  {url: './placeholder6.jpg', sort: 6}
+  {url: './placeholder6.jpg', sort: 6},
 ];
 
 class Carousel extends React.Component {
@@ -38,8 +38,6 @@ class Carousel extends React.Component {
   changeFavorite() {
     this.setState({
       isFavorite: !this.state.isFavorite
-    }, () => {
-      console.log(`Produc favorite is now: ${this.state.isFavorite ? 'yes' : 'no'}`);
     });
   }
 
@@ -54,6 +52,8 @@ class Carousel extends React.Component {
       modalActive: false
     });
   }
+
+
 
   handleThumbnailClick(newIndex) {
     this.setState({
@@ -114,6 +114,7 @@ class Carousel extends React.Component {
         <Scaled
           image={this.state.images[i].url}
           favorite={this.changeFavorite}
+          isFavorite={this.state.isFavorite}
           leftHandle={this.cycleBack}
           rightHandle={this.cycleForward}
           openModal={this.openModal}/>
@@ -122,7 +123,7 @@ class Carousel extends React.Component {
           images={this.state.images}
           change={this.handleThumbnailClick}/>
         <br></br>
-        <Modal closeModal={this.closeModal} modalActive={this.state.modalActive} image={this.state.images[i].url}/>>
+        <Modal closeModal={this.closeModal} modalActive={this.state.modalActive} image={this.state.images[i].url}/>
       </div>
     );
   }

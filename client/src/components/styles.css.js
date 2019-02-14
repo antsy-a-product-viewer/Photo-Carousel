@@ -27,7 +27,8 @@ export default {
     height: '66px',
     padding: '6px',
     backgroundColor: 'rgba(0, 0, 0, 0)',
-    color: 'rgba(0, 0, 0, 0)'
+    color: 'rgba(0, 0, 0, 0)',
+    borderColor: 'transparent'
   },
   heartContainer: {
     backgroundColor: 'rgb(255, 255, 255)',
@@ -38,7 +39,6 @@ export default {
     lineHeight: '11px',
     display: 'inline-block',
     padding: '6px'
-
   },
   heart: {
     height: '24px',

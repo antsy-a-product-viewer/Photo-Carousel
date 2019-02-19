@@ -3,6 +3,7 @@ import Scaled from './scaled.jsx';
 import axios from 'axios';
 import styles from './styles.css.js';
 import Modal from './modal.jsx';
+import React from 'react';
 
 const dummy = [ //local drive loading for development only
   {url: './placeholder.jpg', sort: 0},

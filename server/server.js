@@ -24,7 +24,7 @@ const queryDatabase = (productID) => {
 
 //********************** SERVE CLIENT **********************
 const serveClient = () => {
-  server.use('/product/:productID/images', express.static(path.join(__dirname, '../client/dist')));
+  server.use('/product/:productID/images/', express.static(path.join(__dirname, '../client/dist')));
 };
 
 const serveClientImageData = () => {

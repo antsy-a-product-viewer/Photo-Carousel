@@ -1,4 +1,6 @@
 import styles from './styles.css.js';
+import React from 'react';
+
 
 const Thumbnail = (props) => {
   return (

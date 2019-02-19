@@ -4,7 +4,7 @@
 
 ## Related Projects
 
-  - https://github.com/antsy-a-product-viewer/shop-summary
+  - https://github.com/antsy-a-product-viewer/reviews
   - https://github.com/antsy-a-product-viewer/Add-Items-to-Cart
 
 ## Table of Contents
@@ -17,8 +17,8 @@
 
 > In order to use this module, you must have a config.js file with a mongodB access key and link, exported as DATABASE_LINK.
 > To start the development application:
-1. npm run react-dev: starts the live bundling process
-1. npm run start-server: starts the virtual server
+1. npm run build: starts the live bundling process
+1. npm run start: starts the virtual server
 1. npm run seed : if running off of a new mongodB instance, this command will load that database with the predisposed data
 1. NOTE: Live data can only be accessed at this time if public access is enabled on the author's amazon S3 storage, otherwise you can only use the included placeholder images.  You need to uncomment line 133 in carousel.jsx to pull live data.
 1. Naviagte to 127.0.0.1:3010/product/:productID

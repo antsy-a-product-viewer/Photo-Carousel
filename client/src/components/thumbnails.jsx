@@ -7,7 +7,11 @@ const Thumbnails = (props) => {
   return (
     <div style={styles.thumbnailBar}>
       {props.images.map((image, index) => {
-        return <Thumbnail image={image} index={index} change={props.change}/>;
+        return <Thumbnail
+          image={image}
+          key={index}
+          index={index}
+          change={props.change}/>;
       })}
     </div>
   );

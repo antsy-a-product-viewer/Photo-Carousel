@@ -1,4 +1,6 @@
 import styles from './styles.css.js';
+import React from 'react';
+
 
 const Scaled = (props) => {
   let heartStyle = styles.heart;
@@ -10,16 +12,26 @@ const Scaled = (props) => {
   return (
     <div style={styles.container}>
       <img
+        id='scaledimage'
         src={props.image}
         style={styles.scaledImage}
         onClick={props.openModal}></img>
-      <button style={styles.heartButton} onClick={props.favorite}>
+      <button
+        id='favorite-btn'
+        style={styles.heartButton}
+        onClick={props.favorite}>
         <div style={styles.heartContainer}>
           <svg style ={heartStyle} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={heartSrc}></path></svg>
         </div>
       </button>
-      <button style={styles.leftCarousel} onClick={props.leftHandle}> ‹ </button>
-      <button style={styles.rightCarousel} onClick ={props.rightHandle}> › </button>
+      <button
+        id='nav-back'
+        style={styles.leftCarousel}
+        onClick={props.leftHandle}> ‹ </button>
+      <button
+        id='nav-fwd'
+        style={styles.rightCarousel}
+        onClick ={props.rightHandle}> › </button>
     </div>
   );
 };

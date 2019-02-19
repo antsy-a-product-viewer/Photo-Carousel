@@ -1,4 +1,6 @@
 import styles from './styles.css.js';
+import React from 'react';
+
 
 class Modal extends React.Component {
   constructor(props) {
@@ -30,7 +32,10 @@ class Modal extends React.Component {
       return (
         <div style={styles.modal} id='modal'>
           <div style={styles.modalContent}>
-            <span style={styles.modalBtn} onClick={this.props.closeModal}>&otimes;</span>
+            <span
+              id='closemodal'
+              style={styles.modalBtn}
+              onClick={this.props.closeModal}>&otimes;</span>
             <img src={this.props.image}></img>
           </div>
         </div>

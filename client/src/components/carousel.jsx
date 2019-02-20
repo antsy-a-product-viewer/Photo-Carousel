@@ -89,7 +89,9 @@ class Carousel extends React.Component {
   //******************** STATE ********************
 
   retrieveImageDocument() {
-    let endpoint = window.location.pathname + 'retrieve';
+    //let endpoint = window.location.pathname + 'retrieve';
+    //for proxy usage (WILL NEED TO BE UPDATED FOR AWS DEPLOYMENT?)
+    let endpoint = 'http://127.0.0.1:3010' + window.location.pathname + 'images/retrieve';
     axios({
       method: 'GET',
       url: endpoint

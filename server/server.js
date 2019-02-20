@@ -27,6 +27,18 @@ const serveClient = () => {
   server.use('/product/:productID/', express.static(path.join(__dirname, '../client/dist')));
 };
 
+const allowProxy = () => {
+  server.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT, POST,DELETE');
+    if (req.method === 'OPTIONS') {
+      return res.status(200).end();
+    }
+    next();
+  });
+};
+
 const serveClientImageData = () => {
   server.get('/product/:productID/images/retrieve', (req, res) => {
     let productID = req.params.productID;
@@ -48,6 +60,7 @@ const serveClientImageData = () => {
 //********************** START SERVER **********************
 (initialize => {
   serveClient();
+  allowProxy();
   serveClientImageData();
   server.listen(port, () => {
     console.log(`listening on port ${port}`);

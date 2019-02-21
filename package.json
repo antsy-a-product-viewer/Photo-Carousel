@@ -11,12 +11,12 @@
     "seed": "node ./database-seed/mongo-loader.js",
     "build": "webpack -d --watch",
     "start": "nodemon server/server.js",
-    "test": "jest --coverage --verbose --watchAll"
+    "test": "jest --coverage --verbose --watchAll",
+    "docker": "node server/server.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.4",
-    "fs": "0.0.1-security",
     "mongoose": "^5.4.10",
     "react": "^16.8.2",
     "react-dom": "^16.8.2"
@@ -32,7 +32,8 @@
     "jest": "^24.1.0",
     "nodemon": "^1.18.10",
     "webpack": "^4.29.2",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "fs": "0.0.1-security"
   },
   "babel": {
     "presets": [

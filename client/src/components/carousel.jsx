@@ -23,7 +23,7 @@ class Carousel extends React.Component {
   }
 
 //******************** STATE ********************
-  componentWillMount() {
+  componentDidMount() {
     let endpoint = 'http://184.73.119.71' + window.location.pathname + 'images/retrieve';
     axios({
       method: 'GET',

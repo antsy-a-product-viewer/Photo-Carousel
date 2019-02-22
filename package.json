@@ -9,7 +9,8 @@
   },
   "scripts": {
     "seed": "node ./database-seed/mongo-loader.js",
-    "build": "webpack -d --watch",
+    "build": "webpack",
+    "react-dev": "webpack -d --watch",
     "start": "nodemon server/server.js",
     "test": "jest --coverage --verbose --watchAll",
     "docker": "node server/server.js"

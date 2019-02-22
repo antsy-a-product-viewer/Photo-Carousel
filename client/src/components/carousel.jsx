@@ -24,7 +24,7 @@ class Carousel extends React.Component {
   }
 
 //******************** STATE ********************
-  componentWillMount() {
+  componentDidMount() {
     let endpoint = window.location.pathname + 'images/retrieve';
     axios({
       method: 'GET',

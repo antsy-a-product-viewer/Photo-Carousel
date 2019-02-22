@@ -6,7 +6,7 @@ class Modal extends React.Component {
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     document.addEventListener('mousedown', this.handleOutsideClick, false);
   }
 

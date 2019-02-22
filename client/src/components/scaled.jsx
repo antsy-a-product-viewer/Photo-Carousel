@@ -1,5 +1,4 @@
 import styles from './styles.css.js';
-import React from 'react';
 
 const Scaled = (props) => {
   let heartStyle = styles.heart;

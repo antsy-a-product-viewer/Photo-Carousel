@@ -8,7 +8,7 @@ const port = process.env.PORT || 3010;
 //********************** DATABASE CONNECTION **********************
 const mongoose = require('mongoose');
 const DATABASE_LINK = process.env.DATABASE_LINK || require('../config.js').DATABASE_LINK;
-const DB_SCHEMA = require('../database-seed/database-schema.js').DB_SCHEMA;
+const DB_SCHEMA = require('./database-schema.js').DB_SCHEMA;
 
 const queryDatabase = (productID) => {
   mongoose.connect(DATABASE_LINK, { useNewUrlParser: true, useCreateIndex: true });

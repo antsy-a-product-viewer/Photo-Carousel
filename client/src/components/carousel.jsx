@@ -3,7 +3,6 @@ import Scaled from './scaled.jsx';
 import axios from 'axios';
 import styles from './styles.css.js';
 import Modal from './modal.jsx';
-import React from 'react';
 
 class Carousel extends React.Component {
   constructor(props) {

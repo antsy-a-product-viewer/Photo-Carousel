@@ -1,6 +1,5 @@
 import Thumbnail from './thumbnail.jsx';
 import styles from './styles.css.js';
-import React from 'react';
 
 const Thumbnails = (props) => {
   return (
